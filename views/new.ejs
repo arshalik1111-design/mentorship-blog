@@ -1,9 +1,15 @@
 <%- include('partials/header') %>
 <form action="/posts" method="POST">
-  <input class="form-control" type="text" name="title" placeholder="Enter title" />
+
+  <textarea class="form-control" name="content" placeholder="What's on your mind?"></textarea>
   <br /><br />
-  <textarea class="form-control" name="content" placeholder="Enter content"></textarea>
+
+  <input class="form-control" type="text" name="title" placeholder="Your Name (Optional, you can post as 'Anonymous')" />
+
+
   <br /><br />
+
+
   <button class="btn btn-success" type="submit">Create Post</button>
 </form>
 <%- include('partials/footer') %>

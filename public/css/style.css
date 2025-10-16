@@ -20,7 +20,7 @@ body {
 }
 .card-title {
   font-family: "Merriweather", serif; /* Use Merriweather for post titles */
-  font-weight: bold;
+  
 }
 #card {
   width: 400px;
@@ -47,5 +47,5 @@ h1 {
   margin-left: 1rem; 
 }
 .subheading{
-  font-size: xx-large;
+  font-size: large;
 }
