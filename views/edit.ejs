@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+<form action="/posts/<%=post.id%>" method="POST">
+  <input
+    class="form-control"
+    value="<%=post.title%>"
+    type="text"
+    name="title"
+    placeholder="Enter title"
+  />
+  <br /><br />
+  <textarea class="form-control" name="content" placeholder="Enter content">
+<%=post.content%></textarea
+  >
+  <br /><br />
+  <button class="btn btn-success" type="submit">Create Post</button>
+</form>
+<%- include('partials/footer') %>

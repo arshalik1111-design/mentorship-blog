@@ -1,0 +1,48 @@
+body {
+  background-color: #f8f9fa; /* A very light, neutral gray */
+  color: #212529; /* A dark, off-black for readable text */
+  font-family: sans-serif;
+  margin-left: 1rem;
+  font-family: "Lato", sans-serif;
+  /* background-color: black;
+  color: white; */
+}
+.card {
+  width: 400px;
+  border-radius: 25px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #ffffff; /* Pure white */
+  border: 1px solid #dee2e6; /* A light gray border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+  /* background-color: black;
+  color: white; */
+}
+.card-title {
+  font-family: "Merriweather", serif; /* Use Merriweather for post titles */
+  font-weight: bold;
+}
+#card {
+  width: 400px;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 4px 8px 0px black;
+}
+
+h1 {
+  font-family: "Merriweather", serif;
+}
+.card:hover {
+  box-shadow: 0px 8px 16px black;
+  transition: 0.25s ease-in-out;
+}
+.btn-primary {
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form{
+  margin-left: 1rem; 
+}
