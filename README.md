@@ -16,7 +16,7 @@ You can view and interact with the live, deployed version of the project here:
 
 ## Screenshot
 
-![Mentorship Blog Screenshot]([LINK_TO_YOUR_SCREENSHOT_HERE])
+![Mentorship Blog Screenshot](./public/images/Screenshot.png)
 
 ---
 
@@ -48,12 +48,12 @@ To run this project on your local machine, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/](https://github.com/)[YOUR_GITHUB_USERNAME]/[YOUR_REPO_NAME].git
+   git clone https://github.com/arshalik1111-design/mentorship-blog.git
     ```
 
 2.  **Navigate to the project directory:**
     ```bash
-    cd [YOUR_REPO_NAME]
+    cd mentorship-blog
     ```
 
 3.  **Install dependencies:**
