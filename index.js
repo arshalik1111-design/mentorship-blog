@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+require('dotenv').config(); // This line loads the .env file
+
 const express = require("express");
 const postRoutes = require("./routes/posts");
 
@@ -19,6 +22,22 @@ app.get("/", (req, res) => {
 });
 
 // FINALLY, START THE SERVER
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
+// Function to connect to DB and start the server
+const startServer = async () => {
+  try {
+    // Connect to MongoDB
+    await mongoose.connect(process.env.DATABASE_URL);
+    console.log("✅ Successfully connected to MongoDB!");
+
+    // Start the Express server only after a successful connection
+    app.listen(port, () => {
+      console.log(`🚀 Server is listening on port ${port}`);
+    });
+
+  } catch (err) {
+    console.error("❌ Failed to connect to MongoDB", err);
+  }
+};
+
+// Call the function to start everything
+startServer();

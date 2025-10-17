@@ -1,65 +1,68 @@
-const path = require("path");
-
-const fs = require("fs");
-const { v4: uuidv4 } = require("uuid"); // v4 is the function that generates the ID
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const postsFilePath = path.join(__dirname, "..", "posts.json");
-let posts = [];
-try {
-  const data = fs.readFileSync("posts.json", "utf8");
-  posts = JSON.parse(data);
-} catch (err) {
-  console.error("Error reading posts.json, starting with an empty array.", err);
-}
+const Post = require('../models/post'); // Import the Post model
 
-router.get("/", (req, res) => {
- res.render("home", { posts: [...posts].reverse() });
-});
-router.post("/:id", (req, res) => {
-  const postToUpdate = req.params.id;
-
-  const updateTitle = req.body.title;
-  const updateContent = req.body.content;
-
-  const updatedPost = posts.find((post) => post.id === postToUpdate);
-  updatedPost.title = updateTitle;
-  updatedPost.content = updateContent;
-  fs.writeFileSync("posts.json", JSON.stringify(posts, null, 2));
-  res.redirect("/posts");
+// GET all posts (the homepage)
+router.get('/', async (req, res) => {
+  try {
+    const posts = await Post.find({}).sort({ createdAt: -1 }); // Find all posts and sort by newest first
+    res.render('home', { posts });
+  } catch (err) {
+    console.error("Failed to fetch posts", err);
+  }
 });
 
-router.post("/", (req, res) => {
-  const newPostTitle = req.body.title;
-  const newPostContent = req.body.content;
-
-  const newPost = {
-    title: newPostTitle,
-    content: newPostContent,
-    id: uuidv4(),
-  };
-  posts.push(newPost);
-  fs.writeFileSync("posts.json", JSON.stringify(posts, null, 2));
-  res.redirect("/posts");
+// GET the form to create a new post
+router.get('/new', (req, res) => {
+  res.render('new');
 });
 
-router.post("/:id/delete", (req, res) => {
-  const idToDelete = req.params.id;
-
-  const newPosts = posts.filter((post) => post.id !== idToDelete);
-  posts = newPosts;
-  fs.writeFileSync("posts.json", JSON.stringify(posts, null, 2));
-  res.redirect("/posts");
+// POST a new post
+router.post('/', async (req, res) => {
+  try {
+    const newPost = new Post({
+      title: req.body.title,
+      content: req.body.content
+    });
+    await newPost.save(); // Save the new post to the database
+    res.redirect('/posts');
+  } catch (err) {
+    console.error("Failed to create post", err);
+  }
 });
 
-router.get("/:id/edit", (req, res) => {
-  const idToEdit = req.params.id;
-  const postToEdit = posts.find((post) => post.id === idToEdit);
-  res.render("edit", { post: postToEdit });
+// GET the form to edit a post
+router.get('/:id/edit', async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    res.render('edit', { post });
+  } catch (err) {
+    console.error("Failed to find post for editing", err);
+  }
 });
 
-router.get("/new", (req, res) => {
-  res.render("new");
+// POST an update to a specific post
+router.post('/:id', async (req, res) => {
+  try {
+    const updatedData = {
+      title: req.body.title,
+      content: req.body.content
+    };
+    await Post.findByIdAndUpdate(req.params.id, updatedData);
+    res.redirect('/posts');
+  } catch (err) {
+    console.error("Failed to update post", err);
+  }
+});
+
+// POST to delete a specific post
+router.post('/:id/delete', async (req, res) => {
+  try {
+    await Post.findByIdAndDelete(req.params.id);
+    res.redirect('/posts');
+  } catch (err) {
+    console.error("Failed to delete post", err);
+  }
 });
 
 module.exports = router;
