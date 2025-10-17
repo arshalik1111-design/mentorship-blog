@@ -64,12 +64,12 @@ To run this project on your local machine, follow these steps:
     npm install
     ```
 
-4.  **Set up Environment Variables**
+4.  **Set up Environment Variables:**
+    Create a file named .env in the root of the project and add your MongoDB connection string:
 
-```bash
-Create a file named .env in the root of the project and add your MongoDB connection string:
-DATABASE_URL=your_mongodb_connection_string_here
-```
+    ```bash
+    DATABASE_URL=your_mongodb_connection_string_here
+    ```
 
 5.  **Run the application (for development):**
     ```bash
