@@ -65,9 +65,8 @@ To run this project on your local machine, follow these steps:
     ```
 
 4.  **Set up Environment Variables**
-
-```bash
 Create a file named .env in the root of the project and add your MongoDB connection string:
+```bash
 DATABASE_URL=your_mongodb_connection_string_here
 ```
 
