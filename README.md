@@ -10,7 +10,7 @@ You can view and interact with the live, deployed version of the project here:
 
 **[https://mentorship-blog.onrender.com](https://mentorship-blog.onrender.com)**
 
-*(Note: The initial load may take up to 50 seconds as the free server instance spins up.)*
+_(Note: The initial load may take up to 50 seconds as the free server instance spins up.)_
 
 ---
 
@@ -24,21 +24,21 @@ You can view and interact with the live, deployed version of the project here:
 
 This application includes the full range of CRUD (Create, Read, Update, Delete) functionality:
 
--   **Create:** Easily write and publish new posts through a dedicated form.
--   **Read:** View all posts on a clean, responsive card-based layout.
--   **Update:** Edit existing posts to correct typos or add new information.
--   **Delete:** Remove posts that are no longer needed.
--   **Data Persistence:** Post data is saved to a `posts.json` file on the server, ensuring that content remains even after the server restarts.
--   **Responsive Design:** Styled with Bootstrap for a great user experience on both desktop and mobile devices.
+- **Create:** Easily write and publish new posts through a dedicated form.
+- **Read:** View all posts on a clean, responsive card-based layout.
+- **Update:** Edit existing posts to correct typos or add new information.
+- **Delete:** Remove posts that are no longer needed.
+- **Data Persistence:** All post data is stored in a permanent, cloud-hosted MongoDB Atlas database, ensuring no data is lost on server restarts.
+- **Responsive Design:** Styled with Bootstrap for a great user experience on both desktop and mobile devices.
 
 ---
 
 ## Technologies Used
 
--   **Backend:** Node.js, Express.js
--   **Frontend:** EJS (Embedded JavaScript templates), Bootstrap 5, CSS3, HTML5
--   **Data Storage:** JSON file using Node's built-in `fs` module.
--   **Deployment:** Render
+- **Backend:** Node.js, Express.js
+- **Frontend:** EJS (Embedded JavaScript templates), Bootstrap 5, CSS3, HTML5
+- **Database:** MongoDB Atlas (managed with the Mongoose ODM library)
+- **Deployment:** Render
 
 ---
 
@@ -47,21 +47,31 @@ This application includes the full range of CRUD (Create, Read, Update, Delete) 
 To run this project on your local machine, follow these steps:
 
 1.  **Clone the repository:**
+
     ```bash
-   git clone https://github.com/arshalik1111-design/mentorship-blog.git
+    git clone https://github.com/arshalik1111-design/mentorship-blog.git
     ```
 
 2.  **Navigate to the project directory:**
+
     ```bash
     cd mentorship-blog
     ```
 
 3.  **Install dependencies:**
+
     ```bash
     npm install
     ```
 
-4.  **Run the application (for development):**
+4.  **Set up Environment Variables**
+
+```bash
+Create a file named .env in the root of the project and add your MongoDB connection string:
+DATABASE_URL=your_mongodb_connection_string_here
+```
+
+5.  **Run the application (for development):**
     ```bash
     npx nodemon index.js
     ```
@@ -71,6 +81,9 @@ To run this project on your local machine, follow these steps:
 
 ## Future Enhancements
 
--   [ ] **User Authentication:** Implement user accounts to associate posts with specific authors.
--   [ ] **Image Uploads:** Allow users to upload an image along with their text-based posts.
--   [ ] **Database Migration:** Upgrade from a JSON file to a robust MongoDB database for better performance and scalability.
+- [ ] **User Authentication:** Implement user accounts to associate posts with specific authors.
+- [ ] **Image Uploads:** Allow users to upload an image along with their text-based posts.
+
+```
+
+```
