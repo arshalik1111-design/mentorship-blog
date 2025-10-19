@@ -11,10 +11,10 @@ const port = process.env.PORT || 8080;
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-// THEN SET YOUR VIEW ENGINE
+// SET YOUR VIEW ENGINE
 app.set("view engine", "ejs");
 
-// THEN DEFINE YOUR ROUTES
+// DEFINE YOUR ROUTES
 app.use("/posts", postRoutes);
 
 app.get("/", (req, res) => {
